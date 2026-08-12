@@ -20,6 +20,8 @@ FROM python:3.12-slim-bookworm
 WORKDIR /app
 
 COPY --from=uv --chown=app:app /app/.venv /app/.venv
+# Copy the HTTP entrypoint wrapper (serve_http.py lives in the build stage via ADD . /app)
+COPY --from=uv /app/serve_http.py /app/serve_http.py
 
 ENV PATH="/app/.venv/bin:$PATH"
 
