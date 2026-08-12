@@ -24,6 +24,9 @@ COPY --from=uv --chown=app:app /app/.venv /app/.venv
 COPY --from=uv /app/serve_http.py /app/serve_http.py
 
 ENV PATH="/app/.venv/bin:$PATH"
+# FastMCP reads these via its Pydantic settings to configure the uvicorn server.
+ENV FASTMCP_HOST=0.0.0.0
+ENV FASTMCP_PORT=3000
 
 EXPOSE 3000
 CMD ["python", "serve_http.py"]
