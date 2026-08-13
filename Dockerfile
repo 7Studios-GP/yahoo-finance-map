@@ -28,5 +28,5 @@ ENV PATH="/app/.venv/bin:$PATH"
 ENV FASTMCP_HOST=0.0.0.0
 ENV FASTMCP_PORT=3000
 
-EXPOSE 3000
+EXPOSE 8000
 CMD ["python", "serve_http.py"]
